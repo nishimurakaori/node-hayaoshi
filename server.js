@@ -123,7 +123,8 @@ io.sockets.on('connection', function(socket) {
       pushList.push(data.name);
       io.sockets.emit('pushButton', data);
     }
-  });
+    io.sockets.emit('push');
+   });
 
 
   //pushPlus1

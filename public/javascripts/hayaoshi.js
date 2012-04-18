@@ -7,21 +7,7 @@
         //$('#count').text('test');
       });
 
-/*
-      //sankaList
-      socket.on('sankaList', function(sanka) {
-        // event
-        $('#sankaList').html('');
-        for (var i in sanka){
-          //if(sanka[i] != null)
-          //  $('#sankaList').append('<td><table><tr><td>' + '<img src="https://api.twitter.com/1/users/profile_image?screen_name=' + sanka[i] + '" title="'+ sanka[i] + '"/> ' + 
-          //  '<tr><td>' + sanka[i] +'</td></tr>' +
-          //  '<tr><td><div class="plus1">+1</div></td></tr>' +
-          //  '<tr><td><div class="minus1">-1</div></td></tr>' +
-          //  '</td></tr></table></td>');
-        }
-      });
-*/
+
       //joinList
       socket.on('joinList', function(joinList) {
         // event
@@ -52,11 +38,14 @@
 
       //早押し機を押したとき
       socket.on('pushButton', function(data){
-
         $('#pushList').append('<td>' + '<img src="https://api.twitter.com/1/users/profile_image?screen_name=' + data.name + '" title="' + data.name + '" /></td>');
-        $('#push').get(0).play();
+        //$('#push').get(0).play();
 
-        //$('#test').html('socket.on pushButton');
+      });
+
+      //pushList Clear
+      socket.on('push', function(){
+        $('#pushButton').get(0).play();
       });
 
       //pushList Clear
@@ -66,22 +55,22 @@
 
       //+1 Plus1
       socket.on('pushPlusOne', function(){
-        $('#correct').get(0).play();
+        $('#plusOne').get(0).play();
       });
 
       //-1 Minus1
       socket.on('pushMinusOne', function(){
-        $('#wrong').get(0).play();
+        $('#minusOne').get(0).play();
       });
 
       //NoCount
       socket.on('pushNoCount', function(){
-        $('#whistle').get(0).play();
+        $('#NoCount').get(0).play();
       });
 
       //Reset
       socket.on('pushReset', function(){
-        $('#claps').get(0).play();
+        $('#scoreReset').get(0).play();
       });
 
 
