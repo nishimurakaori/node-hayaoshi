@@ -1,0 +1,76 @@
+h1= title
+//p Welcome to #{title}
+p#browserNotice only google chrome
+- if (twitID)
+  //p#welcome= "Welcome, " + twitID
+
+  //参加者リスト
+  p join list / score
+    table
+      tr
+        #joinList
+
+  //早押しボタン
+  form#sendPush(onsubmit='sendPush(); return false;')
+    input#username(type='hidden', value=twitID)
+    input#push(type='submit', value='')
+
+  //押した人リスト
+  p
+  table
+    tr
+      #pushList
+
+
+  table
+    tr
+      td
+        //正解ボタン
+        form#sendPlusOne(onsubmit='sendPlusOne(); return false;')
+          input#username(type='hidden', value=twitID)
+          input(type='submit', value=' +1 ')
+      td
+        //不正解ボタン
+        form#sendMinusOne(onsubmit='sendMinusOne(); return false;')
+          input(type='submit', value=' -1 ')
+
+      td
+        //ノーカンボタン
+        form#sendNoCount(onsubmit='sendNoCount(); return false;')
+          input(type='submit', value='NoCount')
+
+      td
+        //リセットボタン
+        form#sendReset(onsubmit='sendReset(); return false;')
+          input(type='submit', value='ScoreReset')
+
+  p
+  p
+  p
+
+
+  //chat
+  blockquote.triangle-border
+    form#chatRemark(onsubmit='send(); return false;')
+      input#text(type='text', size='70', autocomplete='off')
+      input(type='submit', value='chat')
+  #chat
+
+
+  p
+    a(href="/logout") Sign out
+
+- else
+  p#SignIn="Sign in with twitter"
+  p
+  p
+  p
+    form#twitterSignin(action="/", method="post" )
+      input(name ="name", type='text', placeholder='Twitter ID')
+      input(type='submit', value='signin')
+
+audio#push(preload="auto",src="sounds/push.wav",type="audio/wav")
+audio#plusOne(preload="auto",src="sounds/ta_ge_quiz_yes01.mp3",type="audio/mp3")
+audio#minusOne(preload="auto",src="sounds/ta_ge_quiz_no01.mp3",type="audio/mp3")
+audio#NoCount(preload="auto",src="sounds/ta_ge_tambourine02.mp3",type="audio/mp3")
+audio#scoreReset(preload="auto",src="sounds/ta_ta_jikangire01.mp3",type="audio/mp3")
